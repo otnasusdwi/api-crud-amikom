@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Kategori extends Model
 {
     use HasFactory;
 
@@ -15,13 +15,7 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'kategori_id',
-        'image',
-        'title',
-        'content',
+        'id',
+        'nama',
     ];
-    public function kategori()
-    {
-        return $this->belongsTo(Kategori::class, 'kategori_id');
-    }
 }

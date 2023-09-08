@@ -32,6 +32,7 @@ class PostController extends Controller
             'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title'     => 'required',
             'content'   => 'required',
+            'kategori_id'   => 'required',
         ]);
 
         //check if validation fails
@@ -48,6 +49,7 @@ class PostController extends Controller
             'image'     => $image->hashName(),
             'title'     => $request->title,
             'content'   => $request->content,
+            'kategori_id'   => $request->kategori_id,
         ]);
 
         //return response
@@ -66,6 +68,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), [
             'title'     => 'required',
             'content'   => 'required',
+            'kategori_id'   => 'required',
         ]);
 
         //check if validation fails
@@ -88,6 +91,7 @@ class PostController extends Controller
                 'image'     => $image->hashName(),
                 'title'     => $request->title,
                 'content'   => $request->content,
+                'kategori_id'   => $request->kategori_id,
             ]);
         } else {
 
@@ -95,6 +99,7 @@ class PostController extends Controller
             $post->update([
                 'title'     => $request->title,
                 'content'   => $request->content,
+                'kategori_id'   => $request->kategori_id,
             ]);
         }
 
@@ -105,7 +110,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //delete image
-        Storage::delete('public/posts/' . $post->image);
+        Storage::delete('public/posts/' .$post->image);
 
         //delete post
         $post->delete();
